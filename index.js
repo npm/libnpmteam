@@ -3,9 +3,7 @@
 const eu = encodeURIComponent
 const figgyPudding = require('figgy-pudding')
 const getStream = require('get-stream')
-const JSONStream = require('JSONStream')
 const npmFetch = require('npm-registry-fetch')
-const {PassThrough} = require('stream')
 const validate = require('aproba')
 
 const TeamConfig = figgyPudding({
@@ -66,47 +64,30 @@ cmd.rm = (user, entity, opts) => {
   })
 }
 
-cmd.lsTeams = (...args) => getStream.array(cmd.lsTeams.stream(...args))
+cmd.lsTeams = (scope, opts) => {
+  opts = TeamConfig(opts)
+  return pwrap(opts, () => getStream.array(cmd.lsTeams.stream(scope, opts)))
+}
 cmd.lsTeams.stream = (scope, opts) => {
   opts = TeamConfig(opts)
-  const parser = JSONStream.parse('.*')
-  pwrap(opts, () => {
-    validate('SO', [scope, opts])
-    return npmFetch(`/-/org/${eu(scope)}/team`, opts.concat({
-      query: {format: 'cli'}
-    })).then(res => {
-      // NOTE: I couldn't figure out how to test the following, so meh
-      /* istanbul ignore next */
-      res.body.on('error', err => parser.emit('error', err))
-      res.body.pipe(parser)
-    })
-  }).catch(err => parser.emit('error', err))
-  /* istanbul ignore next */
-  parser.on('error', err => pt.emit('error', err))
-  const pt = new PassThrough({objectMode: true})
-  return parser.pipe(pt)
+  validate('SO', [scope, opts])
+  return npmFetch.json.stream(`/-/org/${eu(scope)}/team`, '.*', opts.concat({
+    query: {format: 'cli'}
+  }))
 }
 
-cmd.lsUsers = (...args) => getStream.array(cmd.lsUsers.stream(...args))
+cmd.lsUsers = (entity, opts) => {
+  opts = TeamConfig(opts)
+  return pwrap(opts, () => getStream.array(cmd.lsUsers.stream(entity, opts)))
+}
 cmd.lsUsers.stream = (entity, opts) => {
   opts = TeamConfig(opts)
-  const parser = JSONStream.parse('.*')
-  pwrap(opts, () => {
-    const {scope, team} = splitEntity(entity)
-    validate('SSO', [scope, team, opts])
-    return npmFetch(`/-/team/${eu(scope)}/${eu(team)}/user`, opts.concat({
-      query: {format: 'cli'}
-    })).then(res => {
-      // NOTE: I couldn't figure out how to test the following, so meh
-      /* istanbul ignore next */
-      res.body.on('error', err => parser.emit('error', err))
-      res.body.pipe(parser)
-    })
-  }).catch(err => parser.emit('error', err))
-  /* istanbul ignore next */
-  parser.on('error', err => pt.emit('error', err))
-  const pt = new PassThrough({objectMode: true})
-  return parser.pipe(pt)
+  const {scope, team} = splitEntity(entity)
+  validate('SSO', [scope, team, opts])
+  const uri = `/-/team/${eu(scope)}/${eu(team)}/user`
+  return npmFetch.json.stream(uri, '.*', opts.concat({
+    query: {format: 'cli'}
+  }))
 }
 
 cmd.edit = () => {
