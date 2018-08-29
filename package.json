@@ -19,7 +19,7 @@
   },
   "devDependencies": {
     "nock": "^9.6.1",
-    "standard": "*",
+    "standard": "^12.0.0",
     "standard-version": "*",
     "tap": "*",
     "weallbehave": "*",
