@@ -1,7 +1,7 @@
 {
   "name": "libnpmteam",
   "description": "npm Team management APIs",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "author": {
     "name": "Kat Marchán",
     "email": "kzm@zkat.tech",
