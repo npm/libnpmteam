@@ -1,4 +1,10 @@
-# libnpmteam [![npm version](https://img.shields.io/npm/v/libnpmteam.svg)](https://npm.im/libnpmteam) [![license](https://img.shields.io/npm/l/libnpmteam.svg)](https://npm.im/libnpmteam) [![Travis](https://img.shields.io/travis/npm/libnpmteam/latest.svg)](https://travis-ci.org/npm/libnpmteam) [![AppVeyor](https://img.shields.io/appveyor/ci/zkat/libnpmteam/latest.svg)](https://ci.appveyor.com/project/zkat/libnpmteam) [![Coverage Status](https://coveralls.io/repos/github/npm/libnpmteam/badge.svg?branch=latest)](https://coveralls.io/github/npm/libnpmteam?branch=latest)
+# libnpmteam
+
+[![npm version](https://img.shields.io/npm/v/libnpmteam.svg)](https://npm.im/libnpmteam)
+[![license](https://img.shields.io/npm/l/libnpmteam.svg)](https://npm.im/libnpmteam)
+[![Travis](https://img.shields.io/travis/npm/libnpmteam/latest.svg)](https://travis-ci.org/npm/libnpmteam)
+[![AppVeyor](https://img.shields.io/appveyor/ci/npm/libnpmteam/latest.svg)](https://ci.appveyor.com/project/npm/libnpmteam)
+[![Coverage Status](https://coveralls.io/repos/github/npm/libnpmteam/badge.svg?branch=latest)](https://coveralls.io/github/npm/libnpmteam?branch=latest)
 
 [`libnpmteam`](https://github.com/npm/libnpmteam) is a Node.js
 library that provides programmatic access to the guts of the npm CLI's `npm
@@ -36,13 +42,15 @@ console.log(await team.lsTeams('npm'))
 ### Contributing
 
 The npm team enthusiastically welcomes contributions and project participation!
-There's a bunch of things you can do if you want to contribute! The [Contributor
-Guide](CONTRIBUTING.md) has all the information you need for everything from
-reporting bugs to contributing entire new features. Please don't hesitate to
-jump in if you'd like to, or even ask us questions if something isn't clear.
+There's a bunch of things you can do if you want to contribute! The
+[Contributor Guide](https://github.com/npm/cli/blob/latest/CONTRIBUTING.md)
+outlines the process for community interaction and contribution. Please don't
+hesitate to jump in if you'd like to, or even ask us questions if something
+isn't clear.
 
-All participants and maintainers in this project are expected to follow [Code of
-Conduct](CODE_OF_CONDUCT.md), and just generally be excellent to each other.
+All participants and maintainers in this project are expected to follow the
+[npm Code of Conduct](https://www.npmjs.com/policies/conduct), and just
+generally be excellent to each other.
 
 Please refer to the [Changelog](CHANGELOG.md) for project history details, too.
 
