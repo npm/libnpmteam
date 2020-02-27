@@ -6,7 +6,7 @@ const validate = require('aproba')
 
 const cmd = module.exports = {}
 
-cmd.create = (entity, opts = { description: undefined }) => {
+cmd.create = (entity, opts = {}) => {
   return Promise.resolve().then(() => {
     const { scope, team } = splitEntity(entity)
     validate('SSO', [scope, team, opts])
