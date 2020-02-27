@@ -3,7 +3,7 @@
 const figgyPudding = require('figgy-pudding')
 const getStream = require('get-stream')
 const { test } = require('tap')
-const tnock = require('./util/tnock.js')
+const tnock = require('./fixtures/tnock.js')
 
 const team = require('../index.js')
 

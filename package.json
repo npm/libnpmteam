@@ -9,7 +9,7 @@
     "release": "standard-version -s",
     "postrelease": "npm publish && git push --follow-tags",
     "lint": "standard",
-    "test": "tap -J --100 test/*.js",
+    "test": "tap --no-coverage",
     "coverage": "tap"
   },
   "devDependencies": {
@@ -28,5 +28,8 @@
     "figgy-pudding": "^3.4.1",
     "get-stream": "^4.0.0",
     "npm-registry-fetch": "^4.0.0"
+  },
+  "tap": {
+    "check-coverage": true
   }
 }
