@@ -95,7 +95,7 @@ cmd.edit = () => {
 }
 
 function splitEntity (entity = '') {
-  let [, scope, team] = entity.match(/^@?([^:]+):(.*)$/) || []
+  const [, scope, team] = entity.match(/^@?([^:]+):(.*)$/) || []
   return { scope, team }
 }
 
