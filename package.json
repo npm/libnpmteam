@@ -29,6 +29,9 @@
     "get-stream": "^4.0.0",
     "npm-registry-fetch": "^4.0.0"
   },
+  "engines": {
+    "node": ">=10"
+  },
   "tap": {
     "check-coverage": true
   }
