@@ -5,9 +5,9 @@
   "author": "Kat Marchán <kzm@zkat.tech>",
   "license": "ISC",
   "scripts": {
-    "prerelease": "npm t",
-    "release": "standard-version -s",
-    "postrelease": "npm publish && git push --follow-tags",
+    "preversion": "npm run coverage && npm run lint",
+    "postversion": "npm publish",
+    "postpublish": "git push origin --follow-tags",
     "lint": "standard",
     "test": "tap --no-coverage",
     "coverage": "tap"
@@ -15,7 +15,6 @@
   "devDependencies": {
     "nock": "^12.0.1",
     "standard": "^14.3.1",
-    "standard-version": "*",
     "tap": "^14.10.6"
   },
   "repository": {
