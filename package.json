@@ -25,7 +25,6 @@
   "homepage": "https://npmjs.com/package/libnpmteam",
   "dependencies": {
     "aproba": "^2.0.0",
-    "get-stream": "^4.0.0",
     "npm-registry-fetch": "^8.0.0"
   },
   "engines": {

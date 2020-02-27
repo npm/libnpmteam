@@ -1,7 +1,6 @@
 'use strict'
 
 const eu = encodeURIComponent
-const getStream = require('get-stream')
 const npmFetch = require('npm-registry-fetch')
 const validate = require('aproba')
 
@@ -64,7 +63,7 @@ cmd.rm = (user, entity, opts = {}) => {
 
 cmd.lsTeams = (scope, opts = {}) => {
   return pwrap(opts, () => {
-    return getStream.array(cmd.lsTeams.stream(scope, { ...opts }))
+    return cmd.lsTeams.stream(scope, { ...opts }).collect()
   })
 }
 cmd.lsTeams.stream = (scope, opts = {}) => {
@@ -78,7 +77,7 @@ cmd.lsTeams.stream = (scope, opts = {}) => {
 
 cmd.lsUsers = (entity, opts = {}) => {
   return pwrap(opts, () => {
-    return getStream.array(cmd.lsUsers.stream(entity, { ...opts }))
+    return cmd.lsUsers.stream(entity, { ...opts }).collect()
   })
 }
 cmd.lsUsers.stream = (entity, opts = {}) => {

@@ -1,6 +1,5 @@
 'use strict'
 
-const getStream = require('get-stream')
 const { test } = require('tap')
 const tnock = require('./fixtures/tnock.js')
 
@@ -97,9 +96,11 @@ test('lsTeams.stream', t => {
   tnock(t, REG).get(
     '/-/org/foo/team?format=cli'
   ).reply(200, ['foo:bar', 'foo:cli'])
-  return getStream.array(team.lsTeams.stream('foo', OPTS)).then(ret => {
-    t.deepEqual(ret, ['foo:bar', 'foo:cli'], 'got teams')
-  })
+  return team.lsTeams.stream('foo', OPTS)
+    .collect()
+    .then(ret => {
+      t.deepEqual(ret, ['foo:bar', 'foo:cli'], 'got teams')
+    })
 })
 
 test('lsUsers', t => {
@@ -125,9 +126,11 @@ test('lsUsers.stream', t => {
   tnock(t, REG).get(
     '/-/team/foo/cli/user?format=cli'
   ).reply(200, ['iarna', 'zkat'])
-  return getStream.array(team.lsUsers.stream('@foo:cli', OPTS)).then(ret => {
-    t.deepEqual(ret, ['iarna', 'zkat'], 'got team members')
-  })
+  return team.lsUsers.stream('@foo:cli', OPTS)
+    .collect()
+    .then(ret => {
+      t.deepEqual(ret, ['iarna', 'zkat'], 'got team members')
+    })
 })
 
 test('edit', t => {
