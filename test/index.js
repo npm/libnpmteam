@@ -1,6 +1,5 @@
 'use strict'
 
-const figgyPudding = require('figgy-pudding')
 const getStream = require('get-stream')
 const { test } = require('tap')
 const tnock = require('./fixtures/tnock.js')
@@ -8,9 +7,9 @@ const tnock = require('./fixtures/tnock.js')
 const team = require('../index.js')
 
 const REG = 'http://localhost:1337'
-const OPTS = figgyPudding({})({
+const OPTS = {
   registry: REG
-})
+}
 
 test('create', t => {
   tnock(t, REG).put(
@@ -40,9 +39,10 @@ test('create w/ description', t => {
     name: 'cli',
     description: 'just some cool folx'
   }).reply(201, { name: 'cli' })
-  return team.create('@foo:cli', OPTS.concat({
+  return team.create('@foo:cli', {
+    ...OPTS,
     description: 'just some cool folx'
-  })).then(ret => {
+  }).then(ret => {
     t.deepEqual(ret, { name: 'cli' }, 'no desc in return')
   })
 })

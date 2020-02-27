@@ -25,7 +25,6 @@
   "homepage": "https://npmjs.com/package/libnpmteam",
   "dependencies": {
     "aproba": "^2.0.0",
-    "figgy-pudding": "^3.4.1",
     "get-stream": "^4.0.0",
     "npm-registry-fetch": "^4.0.0"
   },
