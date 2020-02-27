@@ -2,8 +2,7 @@
 
 [![npm version](https://img.shields.io/npm/v/libnpmteam.svg)](https://npm.im/libnpmteam)
 [![license](https://img.shields.io/npm/l/libnpmteam.svg)](https://npm.im/libnpmteam)
-[![Travis](https://img.shields.io/travis/npm/libnpmteam/latest.svg)](https://travis-ci.org/npm/libnpmteam)
-[![AppVeyor](https://img.shields.io/appveyor/ci/npm/libnpmteam/latest.svg)](https://ci.appveyor.com/project/npm/libnpmteam)
+[![GitHub Actions](https://github.com/npm/libnpmteam/workflows/Node%20CI/badge.svg)](https://github.com/npm/libnpmteam/workflows/Node%20CI/badge.svg)
 [![Coverage Status](https://coveralls.io/repos/github/npm/libnpmteam/badge.svg?branch=latest)](https://coveralls.io/github/npm/libnpmteam?branch=latest)
 
 [`libnpmteam`](https://github.com/npm/libnpmteam) is a Node.js
