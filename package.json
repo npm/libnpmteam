@@ -9,8 +9,7 @@
     "postversion": "npm publish",
     "postpublish": "git push origin --follow-tags",
     "lint": "standard",
-    "test": "tap --no-coverage",
-    "coverage": "tap"
+    "test": "tap"
   },
   "devDependencies": {
     "nock": "^12.0.1",
